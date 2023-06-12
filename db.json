@@ -1,0 +1,38 @@
+{
+    "users": [
+    {
+      "name": "George Chesire",
+      "password": "georgechesire",
+      "profile_picture": "https://doitbeforeme.com/wp-content/uploads/2023/01/Naruto-Wallpaper-hd.webp",
+      "followers": [],
+      "following": [],
+      "id": 1
+    },
+    {
+      "name": "Terrence Chebii",
+      "password": "terrence",
+      "profile_picture": "https://images.pexels.com/photos/16539495/pexels-photo-16539495.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load",
+      "followers": [],
+      "following": [],
+      "id": 2
+    },
+    {
+      "name": "Yahya Garat",
+      "password": "yahya",
+      "profile_picture": "https://images.pexels.com/photos/904332/pexels-photo-904332.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "followers": [],
+      "following": [],
+      "id": 3
+    }
+  ],
+
+  "videos":[
+    {
+        "video": "https://youtu.be/nNTiK9lB9sI",
+        "user": 1,
+        "likes": 1000,
+        "hashtags": ["#anime", "#demonslayer"],
+        "audio": "original"
+    }
+  ]
+}
