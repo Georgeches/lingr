@@ -1,6 +1,11 @@
-function Discover(){
+import Post from "./Post";
+
+function Discover({posts, users}){
+    const screenWidth = window.screen.width.toString() + 'px'
     return(
-        <h1>Discover</h1>
+        <div className="posts" style={{width: screenWidth}}>
+            {posts.map((post, index)=><Post post={post} users={users} active={index === 0}/>)}
+        </div>
     )
 }
 

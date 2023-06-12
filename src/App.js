@@ -16,8 +16,26 @@ function App() {
 
   const [page, setPage] = useState("")
   const [search, setSearch] = useState("")
+  const [posts, setPosts] = useState([])
+  const [users, setUsers] = useState([])
   const screenWidth = window.screen.width.toString() + 'px'
   const screenHeight = window.screen.height.toString() + 'px'
+
+  useEffect(()=>{
+    fetch("http://localhost:4000/videos")
+    .then(res=>res.json())
+    .then(data=>setPosts(data))
+  },[])
+
+  useEffect(()=>{
+    fetch("http://localhost:4000/users")
+    .then(res=>res.json())
+    .then(data=>setUsers(data))
+  },[])
+
+  console.log(posts)
+  console.log(users)
+
   return (
     <BrowserRouter>
       <Routes>
@@ -26,7 +44,7 @@ function App() {
               <Header page={page} setPage={setPage} setSearch={setSearch}/>
               <main style={{width: screenWidth, height: screenHeight}}>
                 <Sidebar page={page}/>
-                <Discover />
+                <Discover posts={posts} users={users}/>
               </main>
             </>
           }>
