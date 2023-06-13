@@ -1,6 +1,7 @@
 .bottom-bar{
     background-color: black;
     display: flex;
+    position: fixed;
 }
 
 .bottom-bar button{

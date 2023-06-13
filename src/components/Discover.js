@@ -31,7 +31,7 @@ function Discover({posts, users, currentUser}){
     }, []);
 
     return(
-        <div ref={containerRef} className="posts" style={{width: `${screenWidth}`, height: window.screen.width<600?`${window.screen.height*0.7}px`:'auto'}}>
+        <div ref={containerRef} className="posts" style={{width: `${screenWidth}`, height: window.screen.width<600?`${window.screen.height}px`:'auto'}}>
             {posts.map((post, index)=><Post 
                 post={post} users={users} 
                 muted={muted}
