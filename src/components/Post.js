@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react"
 import axios from 'axios'
 
-function Post({post, users, isActive, muted, setMuted, currentUser}){
+function Post({post, users, isActive, setActivePostIndex, muted, setMuted, currentUser}){
     let user = users.find(this_user=>this_user.id===post.user)
     const videoRef = useRef(null);
     const [paused, setPaused] = useState(false)
@@ -71,15 +71,15 @@ function Post({post, users, isActive, muted, setMuted, currentUser}){
         
     }
 
-    useEffect(()=>{
-        let video = videoRef.current
-        if(video){
-            video.play();
+    useEffect(() => {
+        post.id===1?videoRef.current.play() : console.log("not the first post");
+        if (isActive) {
+          videoRef.current.play();
+        } else {
+          videoRef.current.pause();
         }
-        else{
-            video.pause();
-        }
-    }, [videoRef])
+    }, [isActive]);
+    
 
     const handlePause = (e) => {
         e.preventDefault()
