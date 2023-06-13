@@ -11,6 +11,7 @@ import NoPage from "./components/NoPage";
 import Profile from "./components/Profile";
 import Message from "./components/Message";
 import Sidebar from "./components/Sidebar";
+import BottomBar from "./components/BottomBar";
 
 function App() {
 
@@ -20,7 +21,7 @@ function App() {
   const [users, setUsers] = useState([])
   const [currentUser, setCurrentUser] = useState({})
   const screenWidth = window.screen.width.toString() + 'px'
-  const screenHeight = window.screen.height.toString() + 'px'
+  const screenHeight = (window.screen.height-100).toString() + 'px'
 
   useEffect(()=>{
     axios.get("https://my-json-server.typicode.com/Georgeches/lingr/videos")
@@ -51,10 +52,11 @@ function App() {
       <Routes>
           <Route path="/" element={
             <>
-              <Header page={page} setPage={setPage} setSearch={setSearch}/>
-              <main style={{width: screenWidth, height: screenHeight}}>
+            {window.screen.width>600? <Header page={page} setPage={setPage} setSearch={setSearch}/>: console.log("small device")}
+              <main style={{width: screenWidth, height: screenHeight, display: window.screen.width<600?'block':'flex'}}>
                 <Sidebar page={page}/>
                 <Discover posts={posts} users={users} currentUser={currentUser}/>
+                <BottomBar/>
               </main>
             </>
           }></Route>

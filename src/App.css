@@ -291,6 +291,10 @@ a:hover{
   margin-bottom: -5px;
 }
 
+.icon button span{
+  font-size: 30px;
+}
+
 .post-btns button{
   height: 50px;
   width: 50px;
@@ -301,11 +305,19 @@ a:hover{
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 27px;
+  font-size: 30px;
 }
 
 .post-btn-btn{
   margin-bottom: 20px;
+}
+
+.share{
+  rotate: -30deg;
+}
+
+.post-btn-btn span{
+  font-size: 30px;
 }
 
 button{
@@ -412,6 +424,9 @@ button{
 }
 
 @media only screen and (max-width:600px){
+  ::-webkit-scrollbar {
+    display: none;
+  }
   .sidebar{
     display: none;
   }
@@ -421,7 +436,7 @@ button{
   .post-btns{
     position: relative;
     right: 105px;
-    top: 150px;
+    top: 300px;
   }
   .post-btns button{
     background-color: transparent;
@@ -429,6 +444,7 @@ button{
   }
   .post-btn-btn{
     margin-bottom: 10px;
+    
   }
   .icon{
     color: #d6d6d6;
@@ -438,7 +454,7 @@ button{
   }
   .post{
     position: relative;
-    right: 40px;
+    right: 36px;
   }
   .second-post-section{
     position: relative;
@@ -450,12 +466,12 @@ button{
   }
   .first-post-section{
     position: relative;
-    bottom: 270px;
+    bottom: 315px;
     left: 45px;
   }
   .third-post-section{
     position: relative;
-    bottom: 280px;
+    bottom: 320px;
     left: 50px;
   }
 }

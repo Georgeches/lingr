@@ -1,0 +1,21 @@
+.bottom-bar{
+    background-color: black;
+    display: flex;
+}
+
+.bottom-bar button{
+    height: 100%;
+    width: 20%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    outline: none;
+}
+
+.bottom-bar button span, .bottom-bar button i{
+    color: white;
+    font-size: 25px;
+}

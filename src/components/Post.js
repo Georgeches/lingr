@@ -125,7 +125,7 @@ function Post({post, users, isActive, setActivePostIndex, muted, setMuted, curre
                         </button>
                         <p>{post.comments.length}</p>
                     </div>
-                    <button className="post-btn-btn"><i class="las la-share"></i></button>
+                    <button className="post-btn-btn share"><span class="material-symbols-outlined">send</span></button>
                     <button className="post-btn-btn"><span class="material-symbols-outlined">add</span></button>
                     <button className="post-btn-btn"><i class="las la-bookmark"></i></button>
                 </div>
