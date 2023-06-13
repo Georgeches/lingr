@@ -172,6 +172,12 @@ a:hover{
   place-items: center;
   height: 100%;
   overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+}
+
+.post:first-child{
+  margin-top: 0px;
+  margin-bottom: -50px;
 }
 
 .post{
@@ -179,7 +185,7 @@ a:hover{
   height: 100%;
   margin-top: 20px;
   scroll-snap-align: start;
-  margin-bottom: -50px;
+  margin-top: -150px;
 }
 
 .first-post-section{
@@ -284,6 +290,12 @@ a:hover{
   margin-left: 20px;
 }
 
+.icon{
+  text-align: center;
+}
+
+
+
 .post-btns button{
   height: 50px;
   width: 50px;
@@ -291,11 +303,14 @@ a:hover{
   border-radius: 100%;
   border: none;
   outline: none;
-  margin-bottom: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 27px;
+}
+
+.post-btns button:last-child{
+  margin-top: 25px;
 }
 
 button{

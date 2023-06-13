@@ -18,23 +18,28 @@ function App() {
   const [search, setSearch] = useState("")
   const [posts, setPosts] = useState([])
   const [users, setUsers] = useState([])
+  const [currentUser, setCurrentUser] = useState({})
   const screenWidth = window.screen.width.toString() + 'px'
   const screenHeight = window.screen.height.toString() + 'px'
 
   useEffect(()=>{
-    fetch("http://localhost:4000/videos")
+    fetch("https://my-json-server.typicode.com/Georgeches/lingr/videos")
     .then(res=>res.json())
     .then(data=>setPosts(data))
   },[])
 
   useEffect(()=>{
-    fetch("http://localhost:4000/users")
+    fetch("https://my-json-server.typicode.com/Georgeches/lingr/users")
     .then(res=>res.json())
-    .then(data=>setUsers(data))
+    .then(data=>{
+      setUsers(data)
+      setCurrentUser(data[0])
+    })
   },[])
 
   console.log(posts)
   console.log(users)
+  console.log(currentUser)
 
   return (
     <BrowserRouter>
@@ -44,7 +49,7 @@ function App() {
               <Header page={page} setPage={setPage} setSearch={setSearch}/>
               <main style={{width: screenWidth, height: screenHeight}}>
                 <Sidebar page={page}/>
-                <Discover posts={posts} users={users}/>
+                <Discover posts={posts} users={users} currentUser={currentUser}/>
               </main>
             </>
           }>

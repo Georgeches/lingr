@@ -1,34 +1,41 @@
 import { useState, useEffect, useRef } from "react"
 
-function Post({post, users, active}){
+function Post({post, users, isActive, muted, setMuted, currentUser}){
     let user = users.find(this_user=>this_user.id===post.user)
-    const [muted, setMuted] = useState(true)
     const videoRef = useRef(null);
-    const [isActive, setIsActive] = useState(active);
     const [paused, setPaused] = useState(false)
+    let usersLiked = post.users_liked
+    const [users_liked, setUsersLiked] = useState(usersLiked)
+    let userInLikes = users_liked.find(user=>user===currentUser.id)
+    const [liked, setLiked] = useState(userInLikes!==undefined)
 
-    useEffect(() => {
-        if (isActive && videoRef.current) {
-          videoRef.current.play();
-        } else if (!isActive && videoRef.current) {
-          videoRef.current.pause();
+    function handleLike(e){
+        e.preventDefault()
+        if(liked){
+            setUsersLiked(users_liked.filter(user_id=>user_id!==currentUser.id))
+            setLiked(false)
         }
-      }, [isActive]);
-    
-      const handleScroll = () => {
-        if (videoRef.current) {
-          const rect = videoRef.current.getBoundingClientRect();
-          if (rect.top < window.innerHeight && rect.bottom >= 0) {
-            setIsActive(true);
-          } else {
-            setIsActive(false);
-          }
+        else{
+            setUsersLiked([...users_liked, currentUser.id])
+            setLiked(true)
+            console.log(users_liked)
+        }        
+        
+    }
+
+    useEffect(()=>{
+        let video = videoRef.current
+        if(video){
+            video.play();
         }
-      };
+        else{
+            video.pause();
+        }
+    }, [videoRef])
 
     const handlePause = (e) => {
         e.preventDefault()
-        if(paused===true){
+        if(paused){
             videoRef.current.play();
             setPaused(false)
         }
@@ -39,19 +46,31 @@ function Post({post, users, active}){
     };
 
     return(
-        <div class="post" onScroll={e=>handleScroll(e)}>
+        <div class="post" on>
             <div className="second-post-section">
                 <button className="pause-btn">{paused===true?
                     <span class="material-symbols-outlined">play_arrow</span>
                     :
                     <span class="material-symbols-outlined">pause</span>
                 }</button>
-            <video ref={videoRef} onClick={handlePause} loop autoPlay={true} muted={muted} className='video'>
+            <video onDoubleClick={e=>handleLike(e)} ref={videoRef} onClick={handlePause} loop muted={muted} className='video'>
                 <source src={process.env.PUBLIC_URL + post.video} type="video/mp4" />
             </video>
                 <div className="post-btns">
-                    <button><span class="material-symbols-outlined">favorite</span></button>
-                    <button><span class="material-symbols-outlined">forum</span></button>
+                    <div className="icon">
+                        <button onClick={e=>handleLike(e)}>
+                            {!liked?
+                                <span class="material-symbols-outlined">favorite</span>
+                            :
+                                <i style={{color: "red"}} class="las la-heart"></i>
+                            }
+                        </button>
+                        <p>{post.users_liked.length}</p>
+                    </div>
+                    <div className="icon">
+                        <button><span class="material-symbols-outlined">forum</span></button>
+                        <p>{post.comments.length}</p>
+                    </div>
                     <button><i class="las la-share"></i></button>
                     <button><i class="las la-bookmark"></i></button>
                 </div>
