@@ -332,6 +332,7 @@ button{
 .comments-section{
   height: 92%;
   width: 450px;
+  margin-left: 100px;
   border: 1px solid rgb(216, 216, 216);
   border-radius: 10px;
 }

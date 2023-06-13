@@ -22,7 +22,7 @@ function App() {
   const [users, setUsers] = useState([])
   const [currentUser, setCurrentUser] = useState({})
   const screenWidth = window.screen.width.toString() + 'px'
-  const screenHeight = (window.screen.height-100).toString() + 'px'
+  const screenHeight = (window.screen.height-80).toString() + 'px'
 
   useEffect(()=>{
     axios.get("https://my-json-server.typicode.com/Georgeches/lingr/videos")
