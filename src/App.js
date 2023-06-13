@@ -12,6 +12,7 @@ import Profile from "./components/Profile";
 import Message from "./components/Message";
 import Sidebar from "./components/Sidebar";
 import BottomBar from "./components/BottomBar";
+import SearchPage from "./components/SearchPage";
 
 function App() {
 
@@ -60,12 +61,38 @@ function App() {
               </main>
             </>
           }></Route>
-          <Route path="/list" element={<List />} />
+          <Route path="/list" element={
+            <main>
+              <List />
+              <BottomBar />
+            </main>
+          }/>
+          <Route path="/profile" element={
+            <main>
+              <Profile />
+              <BottomBar />
+            </main>
+          } />
+          <Route path="/messages" element={
+            <main>
+              <Message />
+              <BottomBar />
+            </main>
+          } />
+          <Route path="/search" element={
+            <main>
+              <SearchPage />
+              <BottomBar />
+            </main>
+          } />
           <Route path="/login" element={<Login setCurrentUser={setCurrentUser} currentUser={currentUser} users={users}/>} />
           <Route path="/signup" element={<Signup users={users} setUsers={setUsers}/>} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/messages" element={<Message />} />
-          <Route path="*" element={<NoPage />} />
+          <Route path="*" element={
+            <main>
+              <NoPage />
+              <BottomBar />
+            </main>
+            } />
       </Routes>
     </BrowserRouter>
   );
