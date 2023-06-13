@@ -11,10 +11,32 @@ function Post({post, users, isActive, muted, setMuted, currentUser}){
     const [liked, setLiked] = useState(userInLikes!==undefined)
     const [commentsView, setCommentsView] = useState(false)
     const [comments, setComments] = useState(post.comments)
+    const [comment, setComment] =useState("")
     console.log(liked)
 
     const commentsStyle = {
         display: commentsView?"block":"none"
+    }
+
+    function handleComment(e){
+        e.preventDefault()
+        if(comment!==""){
+            let newComment = {
+                user: currentUser.id,
+                comment: comment
+            }
+            axios.patch(`https://my-json-server.typicode.com/Georgeches/lingr/videos/${post.id}`, { comments: [...comments, newComment] })
+            .then(response => {
+                console.log(response.data);
+            })
+            .catch(error => {
+                console.error(error);
+            });
+            setComments([...comments, newComment])
+        }
+        else{
+            alert("comment can't be blank")
+        }
     }
 
     function handleLike(e){
@@ -67,8 +89,8 @@ function Post({post, users, isActive, muted, setMuted, currentUser}){
     };
 
     return(
-        <div className="post-container">
-        <div class="post" on>
+        <div className="post-container" style={{height: `${window.screen.height-190}px`}}>
+        <div class="post">
             <div className="second-post-section">
                 <button className="pause-btn">{paused===true?
                     <span class="material-symbols-outlined">play_arrow</span>
@@ -141,7 +163,7 @@ function Post({post, users, isActive, muted, setMuted, currentUser}){
                 {comments.map(comment=>
                 <div className="comment">
                     <div className="comment-img">
-                        <img src={users.find(this_user=>this_user.id===comment.user).profile_picture}/>
+                        <img src={users.find(this_user=>this_user.id===comment.user).profile_picture} alt="profile"/>
                     </div>
                     <div className="comment-details">
                         <a href="#">{users.find(this_user=>this_user.id===comment.user).name}</a>
@@ -149,6 +171,12 @@ function Post({post, users, isActive, muted, setMuted, currentUser}){
                     </div>
                 </div>
                 )}
+            </div>
+            <div className="comment-section-footer">
+                <input type="text" onChange={e=>setComment(e.target.value)} placeholder="Comment..."></input>
+                <button onClick={e=>handleComment(e)}>
+                    <span class="material-symbols-outlined">send</span>
+                </button>
             </div>
         </div>
         </div>
