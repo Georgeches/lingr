@@ -177,7 +177,6 @@ a:hover{
 
 .post:first-child{
   margin-top: 0px;
-  margin-bottom: -50px;
 }
 
 .post{
@@ -190,7 +189,7 @@ a:hover{
   justify-content: start;
   align-items: center;
   position: relative;
-  bottom: 200px;
+  bottom: 240px;
   left: 40px;
   color: white;
 }
@@ -262,7 +261,7 @@ a:hover{
 
 .third-post-section{
   position: relative;
-  bottom: 200px;
+  bottom: 250px;
   left: 50px;
   color: white;
 }
@@ -438,13 +437,15 @@ button{
   .post-btns .icon:first-child{
     margin-bottom: -150px;
   }
+  .posts{
+    overflow-x: hidden;
+  }
   .post{
     position: relative;
-    bottom: 90px;
-    right: 10px;
-    overflow: hidden;
+    right: 40px;
   }
-  .post-container{
-    overflow-x: hidden;
+  .second-post-section{
+    position: relative;
+    bottom: 75px;
   }
 }

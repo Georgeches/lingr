@@ -20,9 +20,7 @@ function Post({post, users, isActive, muted, setMuted, currentUser}){
 
     const videoStyle = {
         height: window.screen.width < 600? `${window.screen.height}px`:"100%",
-        width: window.screen.width < 600? `${window.screen.width}px`:"100%",
-        top: '0px',
-        bottom: '0px'
+        width: window.screen.width < 600? `${window.screen.width}px`:"100%"
     }
 
     function handleComment(e){
@@ -96,8 +94,8 @@ function Post({post, users, isActive, muted, setMuted, currentUser}){
     };
 
     return(
-        <div className="post-container" style={{height: `${window.screen.height-190}px`}}>
-        <div class="post">
+        <div className="post-container" style={{height: `${window.screen.height-145}px`}}>
+        <div class="post" style={{height: '100%', width: '100%'}}>
             <div className="second-post-section">
                 <button className="pause-btn">{paused===true?
                     <span class="material-symbols-outlined">play_arrow</span>

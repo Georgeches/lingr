@@ -7,7 +7,7 @@ function Discover({posts, users, currentUser}){
     const [active, setActive] = useState(0)
 
     return(
-        <div className="posts" style={{width: `${screenWidth}`}}>
+        <div className="posts" style={{width: `${screenWidth}`, height: window.screen.width<600?`${window.screen.height}px`:'auto'}}>
             {posts.map((post, index)=><Post 
             post={post} users={users} 
             muted={muted}
