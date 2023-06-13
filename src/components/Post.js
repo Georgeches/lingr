@@ -18,6 +18,13 @@ function Post({post, users, isActive, muted, setMuted, currentUser}){
         display: commentsView?"block":"none"
     }
 
+    const videoStyle = {
+        height: window.screen.width < 600? `${window.screen.height}px`:"100%",
+        width: window.screen.width < 600? `${window.screen.width}px`:"100%",
+        top: '0px',
+        bottom: '0px'
+    }
+
     function handleComment(e){
         e.preventDefault()
         if(comment!==""){
@@ -97,7 +104,7 @@ function Post({post, users, isActive, muted, setMuted, currentUser}){
                     :
                     <span class="material-symbols-outlined">pause</span>
                 }</button>
-            <video onDoubleClick={e=>handleLike(e)} ref={videoRef} onClick={handlePause} muted={muted} className='video'>
+            <video style={videoStyle} onDoubleClick={e=>handleLike(e)} ref={videoRef} onClick={handlePause} muted={muted} className='video'>
                 <source src={process.env.PUBLIC_URL + post.video} type="video/mp4" />
             </video>
                 <div className="post-btns">

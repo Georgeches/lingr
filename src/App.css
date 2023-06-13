@@ -181,10 +181,8 @@ a:hover{
 }
 
 .post{
-  min-width: 550px;
-  margin-top: 20px;
+  max-width: 450px;
   scroll-snap-align: start;
-  margin-top: -150px;
 }
 
 .first-post-section{
@@ -243,9 +241,9 @@ a:hover{
 }
 
 .second-post-section{
-  max-height: 600px;
-  max-width: 350px;
   display: flex;
+  width: 100%;
+  height: 100%;
 }
 
 .video{
@@ -292,8 +290,6 @@ a:hover{
 .icon{
   text-align: center;
 }
-
-
 
 .post-btns button{
   height: 50px;
@@ -433,5 +429,22 @@ button{
   }
   .icon{
     color: #d6d6d6;
+    margin-bottom: -130px;
+  }
+  .post-btns button:last-child{
+    position: relative;
+    bottom: 130px;
+  }
+  .post-btns .icon:first-child{
+    margin-bottom: -150px;
+  }
+  .post{
+    position: relative;
+    bottom: 90px;
+    right: 10px;
+    overflow: hidden;
+  }
+  .post-container{
+    overflow-x: hidden;
   }
 }
