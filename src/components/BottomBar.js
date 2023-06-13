@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom'
 function BottomBar(){
     console.log("bottom-bar")
     return(
-        <div className="bottom-bar" style={{height:`${window.screen.height*0.05}px`, width:`${window.screen.width}px`, top:`${window.screen.height*0.72}px`}}>
+        <div className="bottom-bar" style={{height:`${window.screen.height*0.05}px`, width:`${window.screen.width}px`, top:`${window.screen.height*0.95}px`}}>
             <button><Link to="/"><span class="material-symbols-outlined">home</span></Link></button>
             <button><Link to="/search"><i class="las la-search"></i></Link></button>
             <button><Link to="/list"><span class="material-symbols-outlined">filter_list</span></Link></button>
