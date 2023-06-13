@@ -102,7 +102,7 @@ function Post({post, users, isActive, setActivePostIndex, muted, setMuted, curre
                     :
                     <span class="material-symbols-outlined">pause</span>
                 }</button>
-            <video style={videoStyle} onDoubleClick={e=>handleLike(e)} ref={videoRef} onClick={handlePause} muted={muted} className='video'>
+            <video style={videoStyle} onDoubleClick={e=>handleLike(e)} ref={videoRef} onClick={handlePause} loop muted={muted} className='video'>
                 <source src={process.env.PUBLIC_URL + post.video} type="video/mp4" />
             </video>
                 <div className="post-btns">
@@ -125,8 +125,9 @@ function Post({post, users, isActive, setActivePostIndex, muted, setMuted, curre
                         </button>
                         <p>{post.comments.length}</p>
                     </div>
-                    <button><i class="las la-share"></i></button>
-                    <button><i class="las la-bookmark"></i></button>
+                    <button className="post-btn-btn"><i class="las la-share"></i></button>
+                    <button className="post-btn-btn"><span class="material-symbols-outlined">add</span></button>
+                    <button className="post-btn-btn"><i class="las la-bookmark"></i></button>
                 </div>
             </div>
             <div className="third-post-section">

@@ -36,7 +36,6 @@ function App() {
     axios.get("https://my-json-server.typicode.com/Georgeches/lingr/users")
     .then(response => {
       setUsers(response.data);
-      setCurrentUser(response.data[0])
     })
     .catch(error => {
       console.error(error);
@@ -58,14 +57,13 @@ function App() {
                 <Discover posts={posts} users={users} currentUser={currentUser}/>
               </main>
             </>
-          }>
+          }></Route>
           <Route path="/list" element={<List />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
+          <Route path="/login" element={<Login setCurrentUser={setCurrentUser} currentUser={currentUser} users={users}/>} />
+          <Route path="/signup" element={<Signup users={users} setUsers={setUsers}/>} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/messages" element={<Message />} />
           <Route path="*" element={<NoPage />} />
-        </Route>
       </Routes>
     </BrowserRouter>
   );

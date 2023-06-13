@@ -1,0 +1,61 @@
+.login, .signup{
+    display: grid;
+    place-items: center;
+}
+
+form h1{
+    color: #FD3434;
+}
+
+form{
+    margin-top: 100px;
+    min-height: 400px;
+    width: 35%;
+    box-shadow: 1px 1px 10px 1px rgb(252, 219, 219);
+    display: grid;
+    place-items: center;
+    text-align: center;
+}
+  
+form input{
+    height: 50px;
+    width: 80%;
+    background-color: #ededed;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    margin-bottom: 10px;
+    color: rgb(89, 89, 89);
+    padding-left: 10px;
+    font-size: 16px;
+}
+
+form button{
+    height: 50px;
+    width: 80%;
+    background-color: #FD3434;
+    border: none;
+    outline: none;
+    color: white;
+    font-size: 16px;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 7px;
+}
+
+@media only screen and (max-width:600px){
+    body{
+        overflow-y: scroll;
+    }
+    form{
+        width: 95%;
+        height: 90%;
+        box-shadow: none;
+        border-top: 1px solid #FD3434;
+        border-bottom: 1px solid #FD3434;
+        margin-bottom: 50px;
+    }
+    form input, form button{
+        width: 90%;
+    }
+}

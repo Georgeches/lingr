@@ -14,6 +14,7 @@ function Discover({posts, users, currentUser}){
             const { scrollTop, clientHeight } = container;
             const newIndex = Math.ceil(scrollTop / clientHeight);
             setActivePostIndex(newIndex);
+            
         }
         };
 
