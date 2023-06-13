@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react"
+import axios from 'axios'
 
 function Post({post, users, isActive, muted, setMuted, currentUser}){
     let user = users.find(this_user=>this_user.id===post.user)
@@ -8,17 +9,37 @@ function Post({post, users, isActive, muted, setMuted, currentUser}){
     const [users_liked, setUsersLiked] = useState(usersLiked)
     let userInLikes = users_liked.find(user=>user===currentUser.id)
     const [liked, setLiked] = useState(userInLikes!==undefined)
+    const [commentsView, setCommentsView] = useState(false)
+    const [comments, setComments] = useState(post.comments)
+    console.log(liked)
+
+    const commentsStyle = {
+        display: commentsView?"block":"none"
+    }
 
     function handleLike(e){
         e.preventDefault()
         if(liked){
+            axios.patch(`https://my-json-server.typicode.com/Georgeches/lingr/videos/${post.id}`, { users_liked: users_liked.filter(user_id=>user_id!==currentUser.id) })
+            .then(response => {
+                console.log(response.data);
+            })
+            .catch(error => {
+                console.error(error);
+            });
             setUsersLiked(users_liked.filter(user_id=>user_id!==currentUser.id))
             setLiked(false)
         }
         else{
+            axios.patch(`https://my-json-server.typicode.com/Georgeches/lingr/videos/${post.id}`, { users_liked: [...users_liked, currentUser.id] })
+            .then(response => {
+                console.log(response.data);
+            })
+            .catch(error => {
+                console.error(error);
+            });
             setUsersLiked([...users_liked, currentUser.id])
             setLiked(true)
-            console.log(users_liked)
         }        
         
     }
@@ -46,6 +67,7 @@ function Post({post, users, isActive, muted, setMuted, currentUser}){
     };
 
     return(
+        <div className="post-container">
         <div class="post" on>
             <div className="second-post-section">
                 <button className="pause-btn">{paused===true?
@@ -53,7 +75,7 @@ function Post({post, users, isActive, muted, setMuted, currentUser}){
                     :
                     <span class="material-symbols-outlined">pause</span>
                 }</button>
-            <video onDoubleClick={e=>handleLike(e)} ref={videoRef} onClick={handlePause} loop muted={muted} className='video'>
+            <video onDoubleClick={e=>handleLike(e)} ref={videoRef} onClick={handlePause} muted={muted} className='video'>
                 <source src={process.env.PUBLIC_URL + post.video} type="video/mp4" />
             </video>
                 <div className="post-btns">
@@ -65,10 +87,15 @@ function Post({post, users, isActive, muted, setMuted, currentUser}){
                                 <i style={{color: "red"}} class="las la-heart"></i>
                             }
                         </button>
-                        <p>{post.users_liked.length}</p>
+                        <p>{users_liked.length}</p>
                     </div>
                     <div className="icon">
-                        <button><span class="material-symbols-outlined">forum</span></button>
+                        <button onClick={e=>{
+                            e.preventDefault()
+                            setCommentsView(!commentsView)
+                        }}>
+                        <span class="material-symbols-outlined">forum</span>
+                        </button>
                         <p>{post.comments.length}</p>
                     </div>
                     <button><i class="las la-share"></i></button>
@@ -99,6 +126,31 @@ function Post({post, users, isActive, muted, setMuted, currentUser}){
                 </div>
                 <button className="follow-btn">Add friend</button>
             </div>
+        </div>
+        <div className="comments-section" style={commentsStyle}>
+            <div className="comment-section-header">
+                <button onClick={e=>{
+                    e.preventDefault()
+                    setCommentsView(!commentsView)
+                }}>
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+                <h3>Comments</h3>
+            </div>
+            <div className="comments">
+                {comments.map(comment=>
+                <div className="comment">
+                    <div className="comment-img">
+                        <img src={users.find(this_user=>this_user.id===comment.user).profile_picture}/>
+                    </div>
+                    <div className="comment-details">
+                        <a href="#">{users.find(this_user=>this_user.id===comment.user).name}</a>
+                        <p>{comment.comment}</p>
+                    </div>
+                </div>
+                )}
+            </div>
+        </div>
         </div>
     )
 }

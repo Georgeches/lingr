@@ -23,18 +23,24 @@ function App() {
   const screenHeight = window.screen.height.toString() + 'px'
 
   useEffect(()=>{
-    fetch("https://my-json-server.typicode.com/Georgeches/lingr/videos")
-    .then(res=>res.json())
-    .then(data=>setPosts(data))
+    axios.get("https://my-json-server.typicode.com/Georgeches/lingr/videos")
+    .then(response => {
+      setPosts(response.data);
+    })
+    .catch(error => {
+      console.error(error);
+    });
   },[])
 
   useEffect(()=>{
-    fetch("https://my-json-server.typicode.com/Georgeches/lingr/users")
-    .then(res=>res.json())
-    .then(data=>{
-      setUsers(data)
-      setCurrentUser(data[0])
+    axios.get("https://my-json-server.typicode.com/Georgeches/lingr/users")
+    .then(response => {
+      setUsers(response.data);
+      setCurrentUser(response.data[0])
     })
+    .catch(error => {
+      console.error(error);
+    });
   },[])
 
   console.log(posts)
