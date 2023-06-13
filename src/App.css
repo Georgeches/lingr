@@ -446,6 +446,20 @@ button{
   }
   .second-post-section{
     position: relative;
-    bottom: 85px;
+    bottom: 100px;
+  }
+  .pause-btn{
+    position: relative;
+    top: 120px;
+  }
+  .first-post-section{
+    position: relative;
+    bottom: 270px;
+    left: 40px;
+  }
+  .third-post-section{
+    position: relative;
+    bottom: 280px;
+    left: 40px;
   }
 }
