@@ -1,0 +1,14 @@
+.comment-section-header{
+    height: 12%;
+    border-bottom: 1px solid #e7e7e7;
+}
+
+.comments{
+    height: 59%;
+    margin-top: 10px;
+}
+
+.comment-section-footer{
+    height: 6%;
+    display: flex;
+}

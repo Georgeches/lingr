@@ -1,7 +1,7 @@
 import Post from "./Post";
 import { useState, useEffect, useRef } from "react";
 
-function Discover({posts, users, currentUser}){
+function Discover({setPostComments, setPost, posts, users, currentUser}){
     const screenWidth = (window.screen.width).toString() + 'px'
     const [muted, setMuted] = useState(true)
     const [activePostIndex, setActivePostIndex] = useState(0);
@@ -39,6 +39,8 @@ function Discover({posts, users, currentUser}){
                 currentUser={currentUser}
                 isActive={activePostIndex === index}
                 setActivePostIndex={setActivePostIndex}
+                setPost={setPost}
+                setPostComments={setPostComments}
             />
             )}
         </div>

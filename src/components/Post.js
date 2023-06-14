@@ -1,7 +1,8 @@
 import { useState, useEffect, useRef } from "react"
 import axios from 'axios'
+import { useNavigate } from "react-router-dom";
 
-function Post({post, users, isActive, setActivePostIndex, muted, setMuted, currentUser}){
+function Post({setPostComments, setPost, post, users, isActive, setActivePostIndex, muted, setMuted, currentUser}){
     let user = users.find(this_user=>this_user.id===post.user)
     const videoRef = useRef(null);
     const [paused, setPaused] = useState(false)
@@ -10,12 +11,20 @@ function Post({post, users, isActive, setActivePostIndex, muted, setMuted, curre
     let userInLikes = users_liked.find(user=>user===currentUser.id)
     const [liked, setLiked] = useState(userInLikes!==undefined)
     const [commentsView, setCommentsView] = useState(false)
+    const [postView, setPostView] = useState(true)
     const [comments, setComments] = useState(post.comments)
     const [comment, setComment] =useState("")
-    console.log(liked)
+    const nav = useNavigate()
 
     const commentsStyle = {
         display: commentsView?"block":"none"
+    }
+
+    const postStyle = {
+        display: postView===false?"none":"block",
+        height: '100%',
+        width: '100%',
+        scrollSnapAlign: 'start'
     }
 
     const videoStyle = {
@@ -94,9 +103,34 @@ function Post({post, users, isActive, setActivePostIndex, muted, setMuted, curre
         }
     };
 
+    function showComments(e){
+        e.preventDefault()
+        if(window.screen.width<550){
+            setPost(post)
+            setPostComments(post.comments)
+            nav('/comments')
+        }
+        else{
+            setCommentsView(!commentsView)
+        }
+    }
+
+    function hideComments(e){
+        e.preventDefault()
+        if(window.screen.width<550){
+            for (let p of document.querySelectorAll('.post')){
+                p.style.scrollSnapAlign = 'start'
+            }
+            document.querySelector('.posts').style.overflow="scroll"
+            setPostView(!postView)
+            setCommentsView(!commentsView)
+            handlePause(e)
+        }
+    }
+
     return(
         <div className="post-container" style={{height: `${window.screen.height-145}px`}}>
-        <div class="post" style={{height: '100%', width: '100%'}}>
+        <div class="post" style={postStyle}>
             <div className="second-post-section">
                 <button className="pause-btn">{paused===true?
                     <span class="material-symbols-outlined">play_arrow</span>
@@ -118,10 +152,7 @@ function Post({post, users, isActive, setActivePostIndex, muted, setMuted, curre
                         <p>{users_liked.length}</p>
                     </div>
                     <div className="icon">
-                        <button onClick={e=>{
-                            e.preventDefault()
-                            setCommentsView(!commentsView)
-                        }}>
+                        <button onClick={e=>showComments(e)}>
                         <span class="material-symbols-outlined">forum</span>
                         </button>
                         <p>{post.comments.length}</p>
@@ -158,10 +189,7 @@ function Post({post, users, isActive, setActivePostIndex, muted, setMuted, curre
         </div>
         <div className="comments-section" style={commentsStyle}>
             <div className="comment-section-header">
-                <button onClick={e=>{
-                    e.preventDefault()
-                    setCommentsView(!commentsView)
-                }}>
+                <button onClick={e=>hideComments(e)}>
                     <span class="material-symbols-outlined">close</span>
                 </button>
                 <h3>Comments</h3>

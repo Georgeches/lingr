@@ -14,6 +14,7 @@ import Sidebar from "./components/Sidebar";
 import BottomBar from "./components/BottomBar";
 import SearchPage from "./components/SearchPage";
 import Settings from "./components/Settings";
+import Comments from "./components/Comments";
 
 function App() {
 
@@ -24,6 +25,8 @@ function App() {
   const current_user = JSON.parse(localStorage.getItem('current_user'))
   const screenWidth = window.screen.width.toString() + 'px'
   const screenHeight = (window.screen.height-80).toString() + 'px'
+  const [currentPost, setPost] = useState([])
+  const [postComments, setPostComments] = useState([])
 
   useEffect(()=>{
     axios.get("https://my-json-server.typicode.com/Georgeches/lingr/videos")
@@ -57,7 +60,7 @@ function App() {
             {window.screen.width>600? <Header currentUser={current_user} page={page} setPage={setPage} setSearch={setSearch}/>: console.log("small device")}
               <div style={{width: screenWidth, height: screenHeight, display: window.screen.width<600?'block':'flex'}}>
                 <Sidebar page={page}/>
-                <Discover posts={posts} users={users} currentUser={current_user}/>
+                <Discover setPostComments={setPostComments} setPost={setPost} posts={posts} users={users} currentUser={current_user}/>
                 <BottomBar/>
               </div>
             </>
@@ -71,11 +74,11 @@ function App() {
           <Route path="/profile" element={
             <>
             {window.screen.width>600? <Header currentUser={current_user} page={page} setPage={setPage} setSearch={setSearch}/>: console.log("small device")}
-              <>
+              <div style={{width: screenWidth, height: screenHeight, display: window.screen.width<600?'block':'flex'}}>
                 <Sidebar page={page}/>
                 <Profile currentUser={current_user} posts={posts} />
                 <BottomBar/>
-              </>
+              </div>
             </>
           } />
           <Route path="/messages" element={
@@ -88,6 +91,11 @@ function App() {
             <>
               <SearchPage />
               <BottomBar />
+            </>
+          } />
+          <Route path="/comments" element={
+            <>
+              <Comments setPostComments={setPostComments} postComments={postComments} users={users} post={currentPost} currentUser={current_user}/>
             </>
           } />
           <Route path="/login" element={<Login users={users}/>} />

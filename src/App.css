@@ -96,7 +96,6 @@ a:hover{
 
 .post{
   max-width: 450px;
-  scroll-snap-align: start;
 }
 
 .first-post-section{
@@ -395,5 +394,13 @@ button{
     position: relative;
     bottom: 320px;
     left: 50px;
+  }
+
+  .comments-section{
+    height: 92%;
+    width: 100%;
+    margin-left: 0px;
+    border: none;
+    border-radius: 10px;
   }
 }
