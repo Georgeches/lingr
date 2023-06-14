@@ -243,18 +243,19 @@ body{
     }
     
     .third-profile-section{
-        height: 1000px;
         display: flex;
+        justify-content: center;
         flex-wrap: wrap;
-        margin-top: 20px;
-        margin-left: 50px;
+        width: 100%; 
+        margin-left: 0px;
+        margin-top: 10px;
         overflow-y: visible;
     }
     
     .profile-post{
-        width: 300px;
-        margin-right: 20px;
-        margin-bottom: 20px;
+        width: 47%;
+        margin-right: 2px;
+        margin-bottom: 2px;
     }
     
     video{

@@ -5,6 +5,7 @@ import {useNavigate} from 'react-router-dom'
 function Profile({currentUser, posts, setUser}){
     let user_posts = posts.filter(post=>post.user===currentUser.id) 
     const nav = useNavigate()
+    const screenHeight = window.screen.height
 
     function handleLogout(e){
         e.preventDefault()
@@ -14,7 +15,7 @@ function Profile({currentUser, posts, setUser}){
     }
 
     return(
-        <div className="profile">
+        <div className="profile" style={{height: window.screen.height<600?`${screenHeight}px`:console.log("fit")}}>
             {currentUser.name?
             <>
             <div className="first-profile-section">
