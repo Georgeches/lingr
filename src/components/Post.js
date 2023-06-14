@@ -72,11 +72,12 @@ function Post({post, users, isActive, setActivePostIndex, muted, setMuted, curre
     }
 
     useEffect(() => {
-        post.id===1?videoRef.current.play() : console.log("not the first post");
         if (isActive) {
           videoRef.current.play();
+          setPaused(false)
         } else {
           videoRef.current.pause();
+          setPaused(true)
         }
     }, [isActive]);
     
@@ -149,7 +150,7 @@ function Post({post, users, isActive, setActivePostIndex, muted, setMuted, curre
                     </div>            
                     <div>
                         <p>{user? user.name : "profile"}</p>
-                        <p className='audio'><i class="las la-music"></i>{post.audio}</p>
+                        <marquee><p className='audio'><i class="las la-music"></i>{post.audio}</p></marquee>
                     </div>
                 </div>
                 <button className="follow-btn">Add friend</button>

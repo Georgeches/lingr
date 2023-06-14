@@ -4,7 +4,7 @@ import axios from 'axios';
 import './App.css';
 import Discover from "./components/Discover";
 import Header from "./components/Header";
-import List from "./components/List";
+import ViewLater from "./components/ViewLater";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
 import NoPage from "./components/NoPage";
@@ -13,6 +13,7 @@ import Message from "./components/Message";
 import Sidebar from "./components/Sidebar";
 import BottomBar from "./components/BottomBar";
 import SearchPage from "./components/SearchPage";
+import Settings from "./components/Settings";
 
 function App() {
 
@@ -20,6 +21,7 @@ function App() {
   const [search, setSearch] = useState("")
   const [posts, setPosts] = useState([])
   const [users, setUsers] = useState([])
+  const [current_user, setUser] = useState(JSON.parse(localStorage.getItem('current_user')))
   const [currentUser, setCurrentUser] = useState({})
   const screenWidth = window.screen.width.toString() + 'px'
   const screenHeight = (window.screen.height-80).toString() + 'px'
@@ -46,32 +48,36 @@ function App() {
 
   console.log(posts)
   console.log(users)
-  console.log(currentUser)
+  console.log(current_user)
 
   return (
     <BrowserRouter>
       <Routes>
           <Route path="/" element={
             <>
-            {window.screen.width>600? <Header currentUser={currentUser} page={page} setPage={setPage} setSearch={setSearch}/>: console.log("small device")}
+            {window.screen.width>600? <Header currentUser={current_user} page={page} setPage={setPage} setSearch={setSearch}/>: console.log("small device")}
               <main style={{width: screenWidth, height: screenHeight, display: window.screen.width<600?'block':'flex'}}>
                 <Sidebar page={page}/>
-                <Discover posts={posts} users={users} currentUser={currentUser}/>
+                <Discover posts={posts} users={users} currentUser={current_user}/>
                 <BottomBar/>
               </main>
             </>
           }></Route>
-          <Route path="/list" element={
+          <Route path="/viewlater" element={
             <main>
-              <List />
+              <ViewLater />
               <BottomBar />
             </main>
           }/>
           <Route path="/profile" element={
-            <main>
-              <Profile />
-              <BottomBar />
-            </main>
+            <>
+            {window.screen.width>600? <Header currentUser={current_user} page={page} setPage={setPage} setSearch={setSearch}/>: console.log("small device")}
+              <main style={{width: screenWidth, height: screenHeight, display: window.screen.width<600?'block':'flex'}}>
+                <Sidebar page={page}/>
+                <Profile currentUser={current_user} setUser={setUser} posts={posts} />
+                <BottomBar/>
+              </main>
+            </>
           } />
           <Route path="/messages" element={
             <main>
@@ -85,7 +91,7 @@ function App() {
               <BottomBar />
             </main>
           } />
-          <Route path="/login" element={<Login setCurrentUser={setCurrentUser} currentUser={currentUser} users={users}/>} />
+          <Route path="/login" element={<Login setCurrentUser={setUser} currentUser={currentUser} users={users}/>} />
           <Route path="/signup" element={<Signup users={users} setUsers={setUsers}/>} />
           <Route path="*" element={
             <main>

@@ -1,0 +1,152 @@
+.profile{
+    width: 71%;
+}
+
+.first-profile-section{
+    height: 400px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-left: 50px;
+    padding-top: 20px;
+}
+
+.profile-pic{
+    height: 170px;
+    width: 170px;
+    border-radius: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-pic img{
+    width: 100%;
+}
+
+.profile-user-details{
+    margin-top: -20px;
+    width: 40%;
+}
+
+.profile-settings{
+    width: 35%;
+}
+
+.user-name{
+    font-size: 25px;
+    font-weight: 500;
+}
+
+.profile-friends{
+    display: flex;
+    margin-top: -20px;
+}
+
+.profile-friends p{
+    margin-right: 10px;
+    font-size: 17px;
+}
+
+.profile-about{
+    width: 300px;
+}
+
+.profile-interests h3{
+    font-weight: 600;
+}
+
+.profile-interests ul li{
+    margin-bottom: 10px;
+}
+
+.profile-settings-btn{
+    background-color: transparent;
+    border: none;
+    outline: none;
+    height: 45px;
+    width: 45px;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-settings-btn:hover{
+    background-color: rgb(240, 240, 240);
+}
+
+.profile-settings-btn span{
+    font-size: 28px;
+}
+
+.second-profile-section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid #d6d6d6;
+    border-top: 1px solid #d6d6d6;
+    margin-left: 50px;
+    height: 50px;
+}
+
+.view-btn{
+    height: 40px;
+    width: 100px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 17px;
+    border-radius: 10px;
+}
+
+.view-btn:first-child{
+    margin-left: -150px;
+    margin-right: 70px;
+}
+
+.view-btn span{
+    font-size: 26px;
+    margin-right: 5px;
+}
+
+.view-btn:hover, .active{
+    background-color: #d6d6d6;
+}
+
+.third-profile-section{
+    height: 500px;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    margin-left: 50px;
+    overflow-y: scroll;
+}
+
+.profile-post{
+    width: 300px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
+
+video{
+    width: 100%;
+    border-radius: 10px;
+}
+
+body{
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.logout-btn{
+    border: none;
+    outline: none;
+    background-color: transparent;
+    color: #FD3434;
+    font-size: 16px;
+}

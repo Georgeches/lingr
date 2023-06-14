@@ -13,6 +13,7 @@ function Login({setCurrentUser, currentUser, users}){
         let activeUser = users.find(user=>user.name===username && user.password===password)
         if (activeUser){
             setCurrentUser(activeUser)
+            localStorage.setItem("current_user", JSON.stringify(activeUser));
             alert("Successfully logged in")
             nav('/')
         }

@@ -4,13 +4,17 @@ function Sidebar(){
             <div className="page-links">
                 <ul class="sidebar-links">
                     <li>
-                        <a href="/discover">Discover</a>
+                        <a href="/">Discover</a>
                     </li>
                     <li>
-                        <a href="/list">List</a>
+                        <a href="/list">View Later</a>
                     </li>
                     <li>
                         <a href="/randomchat">Random chat</a>
+                    </li>
+
+                    <li>
+                        <a href="/profile">Profile</a>
                     </li>
                 </ul>
             </div>

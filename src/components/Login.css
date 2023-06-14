@@ -3,11 +3,11 @@
     place-items: center;
 }
 
-.login form h1{
+.login form h1, .signup form h1{
     color: #FD3434;
 }
 
-.login form{
+.login form, .signup form{
     margin-top: 100px;
     min-height: 400px;
     width: 35%;
@@ -17,7 +17,7 @@
     text-align: center;
 }
   
-.login form input{
+.login form input, .signup form input{
     height: 50px;
     width: 80%;
     background-color: #ededed;
@@ -30,7 +30,7 @@
     font-size: 16px;
 }
 
-.login form button{
+.login form button, .signup form button{
     height: 50px;
     width: 80%;
     background-color: #FD3434;
@@ -47,7 +47,7 @@
     body{
         overflow-y: scroll;
     }
-    .login form{
+    .login form, .signup form{
         width: 95%;
         height: 90%;
         box-shadow: none;
@@ -55,7 +55,7 @@
         border-bottom: 1px solid #FD3434;
         margin-bottom: 50px;
     }
-    .login form input, form button{
+    .login form input, .login form button, .signup form input, .signup form button{
         width: 90%;
     }
 }
