@@ -53,7 +53,7 @@ function App() {
       <Routes>
           <Route path="/" element={
             <>
-            {window.screen.width>600? <Header page={page} setPage={setPage} setSearch={setSearch}/>: console.log("small device")}
+            {window.screen.width>600? <Header currentUser={currentUser} page={page} setPage={setPage} setSearch={setSearch}/>: console.log("small device")}
               <main style={{width: screenWidth, height: screenHeight, display: window.screen.width<600?'block':'flex'}}>
                 <Sidebar page={page}/>
                 <Discover posts={posts} users={users} currentUser={currentUser}/>

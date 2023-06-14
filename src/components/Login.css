@@ -3,11 +3,11 @@
     place-items: center;
 }
 
-form h1{
+.login form h1{
     color: #FD3434;
 }
 
-form{
+.login form{
     margin-top: 100px;
     min-height: 400px;
     width: 35%;
@@ -17,7 +17,7 @@ form{
     text-align: center;
 }
   
-form input{
+.login form input{
     height: 50px;
     width: 80%;
     background-color: #ededed;
@@ -30,7 +30,7 @@ form input{
     font-size: 16px;
 }
 
-form button{
+.login form button{
     height: 50px;
     width: 80%;
     background-color: #FD3434;
@@ -47,7 +47,7 @@ form button{
     body{
         overflow-y: scroll;
     }
-    form{
+    .login form{
         width: 95%;
         height: 90%;
         box-shadow: none;
@@ -55,7 +55,7 @@ form button{
         border-bottom: 1px solid #FD3434;
         margin-bottom: 50px;
     }
-    form input, form button{
+    .login form input, form button{
         width: 90%;
     }
 }

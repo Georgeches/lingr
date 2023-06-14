@@ -169,20 +169,22 @@ function Post({post, users, isActive, setActivePostIndex, muted, setMuted, curre
                 {comments.map(comment=>
                 <div className="comment">
                     <div className="comment-img">
-                        <img src={users.find(this_user=>this_user.id===comment.user).profile_picture} alt="profile"/>
+                    <img src={users.find(this_user => this_user.id === comment.user)?.profile_picture || 'profile'} alt="profile" />
                     </div>
                     <div className="comment-details">
-                        <a href="#">{users.find(this_user=>this_user.id===comment.user).name}</a>
+                        <a href="#">{users.find(this_user=>this_user.id===comment.user)?.name || 'name'}</a>
                         <p>{comment.comment}</p>
                     </div>
                 </div>
                 )}
             </div>
             <div className="comment-section-footer">
-                <input type="text" onChange={e=>setComment(e.target.value)} placeholder="Comment..."></input>
-                <button onClick={e=>handleComment(e)}>
-                    <span class="material-symbols-outlined">send</span>
-                </button>
+                <form onSubmit={handleComment}>
+                    <input type="text" onChange={e=>setComment(e.target.value)} placeholder="Comment..."></input>
+                    <button type="submit">
+                        <span class="material-symbols-outlined">send</span>
+                    </button>
+                </form>
             </div>
         </div>
         </div>
