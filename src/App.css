@@ -342,7 +342,6 @@ button{
 @media only screen and (max-width:600px){
   body{
     overflow-x: hidden;
-    overflow-y: scroll;
   }
   ::-webkit-scrollbar {
     display: none;

@@ -44,9 +44,6 @@
 }
 
 @media only screen and (max-width:600px){
-    body{
-        overflow-y: scroll;
-    }
     .login form, .signup form{
         width: 95%;
         height: 90%;

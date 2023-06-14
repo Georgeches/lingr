@@ -55,11 +55,11 @@ function App() {
           <Route path="/" element={
             <>
             {window.screen.width>600? <Header currentUser={current_user} page={page} setPage={setPage} setSearch={setSearch}/>: console.log("small device")}
-              <main style={{width: screenWidth, height: screenHeight, display: window.screen.width<600?'block':'flex'}}>
+              <div style={{width: screenWidth, height: screenHeight, display: window.screen.width<600?'block':'flex'}}>
                 <Sidebar page={page}/>
                 <Discover posts={posts} users={users} currentUser={current_user}/>
                 <BottomBar/>
-              </main>
+              </div>
             </>
           }></Route>
           <Route path="/viewlater" element={
@@ -71,32 +71,32 @@ function App() {
           <Route path="/profile" element={
             <>
             {window.screen.width>600? <Header currentUser={current_user} page={page} setPage={setPage} setSearch={setSearch}/>: console.log("small device")}
-              <main style={{width: screenWidth, height: screenHeight, display: window.screen.width<600?'block':'flex'}}>
+              <>
                 <Sidebar page={page}/>
                 <Profile currentUser={current_user} posts={posts} />
                 <BottomBar/>
-              </main>
+              </>
             </>
           } />
           <Route path="/messages" element={
-            <main>
+            <>
               <Message />
               <BottomBar />
-            </main>
+            </>
           } />
           <Route path="/search" element={
-            <main>
+            <>
               <SearchPage />
               <BottomBar />
-            </main>
+            </>
           } />
           <Route path="/login" element={<Login users={users}/>} />
           <Route path="/signup" element={<Signup users={users} setUsers={setUsers}/>} />
           <Route path="*" element={
-            <main>
+            <>
               <NoPage />
               <BottomBar />
-            </main>
+            </>
             } />
       </Routes>
     </BrowserRouter>

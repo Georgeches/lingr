@@ -1,6 +1,6 @@
 .profile{
     width: 71%;
-    overflow-y: scroll;
+    overflow: scroll;
 }
 
 .first-profile-section{
@@ -139,10 +139,6 @@ video{
     border-radius: 10px;
 }
 
-body{
-    overflow-y: scroll;
-    overflow-x: hidden;
-}
 
 .logout-btn{
     border: none;
@@ -243,29 +239,22 @@ body{
     }
     
     .third-profile-section{
-        display: flex;
         justify-content: center;
-        flex-wrap: wrap;
         width: 100%; 
         margin-left: 0px;
-        margin-top: 10px;
+        margin-top: 0px;
         overflow-y: visible;
     }
     
     .profile-post{
         width: 47%;
-        margin-right: 2px;
-        margin-bottom: 2px;
+        margin-right: 1px;
+        margin-bottom: 1px;
     }
     
     video{
         width: 100%;
         border-radius: 10px;
-    }
-    
-    body{
-        overflow-y: scroll;
-        overflow-x: hidden;
     }
     
     .logout-btn{
@@ -275,4 +264,7 @@ body{
         color: #FD3434;
         font-size: 16px;
     }
-}
+    body{
+        overflow-y: scroll;
+    }
+} 
