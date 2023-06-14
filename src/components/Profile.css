@@ -1,5 +1,6 @@
 .profile{
     width: 71%;
+    overflow-y: scroll;
 }
 
 .first-profile-section{
@@ -149,4 +150,128 @@ body{
     background-color: transparent;
     color: #FD3434;
     font-size: 16px;
+}
+
+.interact-btns button{
+    height: 35px;
+    width: 100px;
+    background-color: #FD3434;
+    border: none;
+    outline: none;
+    border-radius: 7px; 
+    font-size: 15px;
+    color: white; 
+}
+
+.interact-btns button:first-child{
+    margin-right: 10px;
+}
+
+@media only screen and (max-width:600px){
+    .profile{
+        width: 100%;
+    }
+    
+    .first-profile-section{
+        height: 450px;
+        width: 100%;
+        display: flex;
+        justify-content: start;
+        margin-left: 10px;
+        padding-top: 20px;
+    }
+    
+    .profile-pic{
+        height: 100px;
+        width: 100px;
+        border-radius: 100%;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .profile-pic img{
+        width: 100%;
+    }
+    
+    .profile-user-details{
+        margin-left: 20px;
+        margin-top: -20px;
+        width: 70%;
+    }
+    
+    .profile-settings{
+        display: none;
+    }
+    
+    .user-name{
+        font-size: 17px;
+        font-weight: 500;
+        margin-top: 30px;
+    }
+    
+    .profile-about{
+        width: 350px;
+        position: relative;
+        margin-top: 30px;
+        right: 110px;
+    }
+
+    .profile-interests{
+        position: relative;
+        margin-top: 30px;
+        right: 110px;
+    }
+    
+    .second-profile-section{
+        margin-left: 0px;
+    }
+    
+    .view-btn:first-child{
+        margin-left: 0px;
+        margin-right: 70px;
+    }
+    
+    .view-btn span{
+        font-size: 26px;
+        margin-right: 5px;
+    }
+    
+    .view-btn:hover, .active{
+        background-color: #d6d6d6;
+    }
+    
+    .third-profile-section{
+        height: 1000px;
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 20px;
+        margin-left: 50px;
+        overflow-y: visible;
+    }
+    
+    .profile-post{
+        width: 300px;
+        margin-right: 20px;
+        margin-bottom: 20px;
+    }
+    
+    video{
+        width: 100%;
+        border-radius: 10px;
+    }
+    
+    body{
+        overflow-y: scroll;
+        overflow-x: hidden;
+    }
+    
+    .logout-btn{
+        border: none;
+        outline: none;
+        background-color: transparent;
+        color: #FD3434;
+        font-size: 16px;
+    }
 }

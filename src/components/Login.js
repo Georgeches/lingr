@@ -2,7 +2,7 @@ import { useState } from "react";
 import {useNavigate, Link} from 'react-router-dom'
 import './Login.css'
 
-function Login({setCurrentUser, currentUser, users}){
+function Login({users}){
 
     const [username, setName] = useState("")
     const [password, setPassword] = useState("")
@@ -12,7 +12,6 @@ function Login({setCurrentUser, currentUser, users}){
         e.preventDefault();
         let activeUser = users.find(user=>user.name===username && user.password===password)
         if (activeUser){
-            setCurrentUser(activeUser)
             localStorage.setItem("current_user", JSON.stringify(activeUser));
             alert("Successfully logged in")
             nav('/')

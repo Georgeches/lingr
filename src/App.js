@@ -21,8 +21,7 @@ function App() {
   const [search, setSearch] = useState("")
   const [posts, setPosts] = useState([])
   const [users, setUsers] = useState([])
-  const [current_user, setUser] = useState(JSON.parse(localStorage.getItem('current_user')))
-  const [currentUser, setCurrentUser] = useState({})
+  const current_user = JSON.parse(localStorage.getItem('current_user'))
   const screenWidth = window.screen.width.toString() + 'px'
   const screenHeight = (window.screen.height-80).toString() + 'px'
 
@@ -74,7 +73,7 @@ function App() {
             {window.screen.width>600? <Header currentUser={current_user} page={page} setPage={setPage} setSearch={setSearch}/>: console.log("small device")}
               <main style={{width: screenWidth, height: screenHeight, display: window.screen.width<600?'block':'flex'}}>
                 <Sidebar page={page}/>
-                <Profile currentUser={current_user} setUser={setUser} posts={posts} />
+                <Profile currentUser={current_user} posts={posts} />
                 <BottomBar/>
               </main>
             </>
@@ -91,7 +90,7 @@ function App() {
               <BottomBar />
             </main>
           } />
-          <Route path="/login" element={<Login setCurrentUser={setUser} currentUser={currentUser} users={users}/>} />
+          <Route path="/login" element={<Login users={users}/>} />
           <Route path="/signup" element={<Signup users={users} setUsers={setUsers}/>} />
           <Route path="*" element={
             <main>

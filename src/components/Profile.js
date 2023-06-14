@@ -9,8 +9,8 @@ function Profile({currentUser, posts, setUser}){
     function handleLogout(e){
         e.preventDefault()
         localStorage.setItem("current_user", JSON.stringify({}));
-        setUser({})
         nav('/login')
+        window.location.reload()
     }
 
     return(
@@ -33,6 +33,10 @@ function Profile({currentUser, posts, setUser}){
                         <p>{user_posts.length} posts</p>
                         <p>{currentUser.friends.length} friends</p>
                         <p>{currentUser.list.length} View later</p>
+                    </div>
+                    <div className='interact-btns'>
+                        <button>Add Friend</button>
+                        <button>Message</button>
                     </div>
                     <div className='profile-about'>
                         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
